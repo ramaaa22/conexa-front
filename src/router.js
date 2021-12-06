@@ -1,21 +1,48 @@
-import Vue from "vue";
-import VueRouter from 'vue-router'
-import Posts from "./components/Posts.vue"
+import Vue from 'vue';
+import Router from 'vue-router';
+import Login from './views/Login.vue';
+import Posts from './views/Posts.vue'
+import Photos from './views/Photos.vue'
 
+Vue.use(Router);
 
-Vue.use(VueRouter)
-
-const routes = [
+export const routes = [
+	{
+		path: '/',
+		name: 'login',
+		component: Login,
+		hidden: true,
+		
+	},
     {
-        path: "/posts",
-        name: "posts",
-        component: Posts
-    }
-];
+		path: '/posts',
+		name: 'posts',
+		component: Posts,
+		hidden: true,
+	},
+    {
+		path: '/photos',
+		name: 'photos',
+		component: Photos,
+		hidden: true,
+	},
 
-const router = new VueRouter({
-    mode: "history",
-    routes
-});
 
-export default router;
+	
+	
+]
+
+const createRouter = () => new Router({
+	mode:'hash',
+	scrollBehavior: () => ({ y: 0 }),
+	routes
+})
+
+const router = createRouter()
+
+export function resetRouter() {
+	const newRouter = createRouter()
+	router.matcher = newRouter.matcher 
+}
+
+export default router

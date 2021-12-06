@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <el-table v-if="show" :data="photos" style="width: 100%">
+    <el-table v-if="show" :data="photos" :loading="loading" style="width: 100%">
       <el-table-column prop="albumId" label="Album id" width="180"> </el-table-column>
       <el-table-column prop="id" label="Id" width="180"></el-table-column>
       <el-table-column prop="title" label="Title"> </el-table-column>
@@ -21,6 +21,7 @@ export default {
             .then(data =>{
                 this.photos=data.data.photos;
                 this.show=true;
+                this.loading=false;
             })
       } catch (error) {
           console.error(error)
@@ -29,7 +30,8 @@ export default {
   data() {
       return {
       photos: [],
-      show:false
+      show:false,
+      loading:true
       }
   },
   methods: {},

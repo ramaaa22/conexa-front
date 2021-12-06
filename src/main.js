@@ -6,10 +6,10 @@ import VueAxios from 'vue-axios';
 import axios from 'axios'
 import router from "./router";
 
+
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 Vue.use(VueAxios, axios);
-
 
 
 new Vue({

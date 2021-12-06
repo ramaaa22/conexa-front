@@ -16,7 +16,7 @@ export default {
   created() {
       try {
           const token = localStorage.token;
-          axios.get('http://localhost:3000/posts', { headers: {"Authorization" : `Bearer ${token}`, "Access-Control-Allow-Origin": "*"} })
+          axios.get('http://localhost:3000/posts', { headers: {"Authorization" : `Bearer ${token}`} })
             .then(data =>{
                 this.posts=data.data.posts;
                 this.show=true;
